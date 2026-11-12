@@ -2,8 +2,8 @@
 
 > Complétez ce fichier au fil de l'atelier, puis faites un commit et un push (voir la section « Rendu » du README).
 
-**Nom / Prénom :**
-**Groupe :**
+**Nom / Prénom :**Imrân Benessam
+**Groupe :**RS2
 
 ---
 
@@ -31,20 +31,31 @@
 ## Exercice 4 — Déclaratif
 
 7. Quelle différence entre `kubectl create` et `kubectl apply` ?
-   >
+   >`kubectl create` est impératif et échoue si la ressource existe déjà. `kubectl apply` est déclaratif : il applique l'état décrit dans un manifeste YAML, créant la ressource si elle n'existe pas ou la mettant à jour si elle a changé.
 8. À quoi sert le `selector` d'un Service ? Que se passe-t-il s'il ne correspond à aucun pod ?
-   >
+   >Le selector permet au Service d'identifier quels pods cibler en fonction de leurs labels. S'il ne correspond à aucun pod, le Service ne transmettra aucun trafic (les endpoints associés seront vides).
 
 ## Exercice 5 — Scaling & mises à jour
 
 9. Sur quels nœuds se trouvent vos 3 réplicas ? Collez la sortie de `kubectl get pods -l app=site -o wide`.
-   ```
+   ```@imranbnsm ➜ /workspaces/atelier-kubernetes (main) $ kubectl get pods -o wide -w
+NAME                   READY   STATUS    RESTARTS   AGE   IP          NODE               NOMINATED NODE   READINESS GATES
+site-75775484b-4bkkg   1/1     Running   0          67s   10.42.2.6   k3d-lab-server-0   <none>           <none>
+site-75775484b-65tkx   1/1     Running   0          74s   10.42.1.7   k3d-lab-agent-1    <none>           <none>
+web-68d995574f-nw42f   1/1     Running   0          13m   10.42.1.6   k3d-lab-agent-1    <none>           <none>
+site-75775484b-wcp4t   1/1     Running             0          6s    10.42.0.5   k3d-lab-agent-0    <none>           <none>
+site-5cc664db9c-gzrhc   1/1     Running             0          5s    10.42.2.7   k3d-lab-server-0   <none>      
+      <none>
+site-5cc664db9c-sgcd5   1/1     Running             0          8s     10.42.0.6   k3d-lab-agent-0    <none>           <none>
+
+site-5cc664db9c-lpdj6   1/1     Running             0          8s     10.42.1.8   k3d-lab-agent-1    <none>           <none>
+
 
    ```
 10. Avec l'image `nginx:9.99`, quel statut avait le pod ? Quelle commande vous a donné la cause ?
-    >
+    >Le pod affichait un statut ImagePullBackOff / ErrImagePull. La commande kubectl describe pod (ou kubectl logs) a permis de visualiser l'erreur d'extraction de l'image inexistante dans la section Events.
 11. Pendant la panne, le site restait-il accessible ? Pourquoi ?
-    >
+    >Oui, le site restait accessible car le déploiement utilise une mise à jour progressive (rolling update). Les anciens pods valides continuaient de traiter le trafic tant que les nouveaux n'étaient pas opérationnels.
 
 ## Exercice 6 — Portainer & Mario
 
