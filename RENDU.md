@@ -17,9 +17,9 @@
 ## Exercice 2 — Premier déploiement
 
 3. Quels objets Kubernetes ont été créés par `kubectl create deployment` ? (indice : `kubectl get all`)
-   >
+   >Un Deployment, un ReplicaSet et un Pod (ainsi qu'un Service associé suite à la commande `expose`).
 4. Vous avez supprimé le pod `web-...` : que s'est-il passé, et pourquoi ?
-   >
+   >Le pod supprimé a immédiatement disparu et un nouveau pod a été recréé automatiquement avec un nom différent. C'est le principe d'auto-réparation du Deployment, qui garantit que l'état réel correspond à l'état désiré.
 
 ## Exercice 3 — Modifier un conteneur en direct
 
