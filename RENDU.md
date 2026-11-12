@@ -60,9 +60,9 @@ site-5cc664db9c-lpdj6   1/1     Running             0          8s     10.42.1.8 
 ## Exercice 6 — Portainer & Mario
 
 12. URL publique de votre Mario :
-    >
+    >https://friendly-space-orbit-wr546gvjvrrf5wxx-8585.app.github.dev/
 13. Retrouvez le Deployment `mario` en ligne de commande. Portainer et `kubectl` parlent-ils au même composant ? Lequel ?
-    >
+    >Oui, ils dialoguent tous les deux avec l'API Server de Kubernetes, qui gère la ressource Deployment dans le cluster.
 
 ## Bonus (facultatif)
 
