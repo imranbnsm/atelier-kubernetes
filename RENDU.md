@@ -10,9 +10,9 @@
 ## Exercice 1 — Cluster
 
 1. Combien de nœuds affiche `kubectl get nodes` ? Quel est le rôle de chacun ?
-   >
+   >3 nœuds s'affichent : 1 nœud control-plane (`k3d-lab-server-0`) qui pilote le cluster et héberge l'API Server, et 2 nœuds workers (`k3d-lab-agent-0` et `k3d-lab-agent-1`) qui exécutent les charges de travail applicatives.
 2. Que montre `docker ps` ? Qu'est-ce qu'un « nœud » dans k3d, concrètement ?
-   >
+   >`docker ps` liste les conteneurs Docker en cours d'exécution. Concrètement dans k3d, chaque nœud correspond à un conteneur Docker distinct qui exécute une instance de k3s (une distribution Kubernetes légère).
 
 ## Exercice 2 — Premier déploiement
 
