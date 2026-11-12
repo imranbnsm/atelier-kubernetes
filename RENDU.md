@@ -24,9 +24,9 @@
 ## Exercice 3 — Modifier un conteneur en direct
 
 5. Après suppression du pod, votre message « Bienvenue... » a-t-il survécu ? Pourquoi ?
-   >
+   >Non, le message a disparu. Les conteneurs étant éphémères, toute modification effectuée à chaud à l'intérieur d'un conteneur est perdue dès sa destruction et sa recréation.
 6. Pourquoi le `port-forward` a-t-il cessé de fonctionner après la suppression du pod ?
-   >
+   >Le tunnel était lié au pod ou au Service ciblant un pod qui a été détruit. Lorsque la ressource cible a changé, le port-forward s'est coupé.
 
 ## Exercice 4 — Déclaratif
 
